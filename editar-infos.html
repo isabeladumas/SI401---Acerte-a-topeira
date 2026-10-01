@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerte os zumbis - Perfil</title>
+
+    <link rel="stylesheet" href="css/editar-infos.css">
+</head>
+<body>
+
+    <header class="topo">
+        <h1 class="logo">
+            Nome do site
+            <!-- troque o emoji por <img src="Imgs/logo.png" alt=""> -->
+            <img class="icone "src="Imgs/vaso.png" alt="">
+        </h1>
+
+        <nav class="menu">
+            <a class="menu-link" href="jogo.html">Jogo <img class="icone" src="/Imgs/bonsai.png" alt=""></a>
+            <a class="menu-link" href="ranking.html">Ranking <img class="icone" src="/Imgs/trofeu.png" alt=""></a>
+            <a class="menu-link" href="perfil.html" aria-current="page">Perfil<img class="icone" src="/Imgs/perfil.png" alt=""> </a>
+            <a class="menu-link" href="login.html">Sair <img class="icone" src="/Imgs/sair.png" alt=""> </a>
+        </nav>
+    </header>
+
+    <main class="pagina">
+        <section class="cartao">
+            <h2 class="titulo">Perfil do <span>Jardineiro</span></h2>
+
+            <form class="formulario">
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Maria" autocomplete="name">
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="xx xxxxx-xxxx" autocomplete="tel">
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="maria@email.com" autocomplete="email">
+                </div>
+
+                <button type="submit" class="botao-salvar">Salvar Alterações</button>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
