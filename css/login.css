@@ -191,3 +191,9 @@ button {
 
     text-decoration: underline;
 }
+
+.caixa_cadastro{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}/*não mexer */
