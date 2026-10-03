@@ -72,7 +72,7 @@ section::before {
     z-index: 0;
 }
 
-.ranking-card {
+.game-card {
     position: relative;
     z-index: 1;
     background-color: #83552f;
@@ -86,32 +86,12 @@ section::before {
     text-align: left;
 }
 
-.ranking-card h2 {
-    font-family: "Courier New", monospace;
-    font-size: 32px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-thead {
-    background-color: #000000;
-}
-
-th {
-    color: #f5c72f;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 13px;
-    padding: 15px 10px;
-    text-align: center;
-}
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
+.game-placeholder {
+    display: block;
+    width: min(60%, 600px);
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
 }
 
 @media (max-width: 768px) {
@@ -134,22 +114,18 @@ th {
         gap: 10px;
     }
 
-    .ranking-card {
+    .game-card {
         width: 90%;
         padding: 25px 20px;
         box-shadow: 10px 10px 0px #386b25;
         border-radius: 20px;
     }
 
-    .ranking-card h2 {
+    .game-card h2 {
         font-size: 24px;
         text-align: center;
     }
 
-    th {
-        font-size: 11px;
-        padding: 10px 6px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -161,17 +137,12 @@ th {
         width: 40px;
     }
 
-    .ranking-card {
+    .game-card {
         width: 95%;
         padding: 20px 15px;
     }
 
-    .ranking-card h2 {
+    .game-card h2 {
         font-size: 20px;
-    }
-
-    th {
-        font-size: 9px;
-        padding: 8px 4px;
     }
 }
