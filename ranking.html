@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,28 +7,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/ranking.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>NOME DO SITE
-            <img class="logo-header" src="Imgs/logo.png" alt="Planta Logo">
+    <header class="topo">
+        <h1 class="logo">
+            Acerte os zumbis
+            <img src="Imgs/vaso.png" alt="">
         </h1>
-        <nav>
-            <ul>
-                <li><a href="jogo.html">JOGO</a></li>
-                <li><a href="ranking.html" class="active">RANKING</a></li>
-                <li><a href="perfil.html">PERFIL</a></li>
-                <li><a href="login.html">SAIR</a></li>
-            </ul>
+
+        <nav class="menu">
+            <a class="menu-link" href="jogo.html">Jogo <img src="Imgs/bonsai.png" alt=""></a>
+            <a class="menu-link" href="ranking.html" aria-current="page">Ranking <img src="Imgs/trofeu.png" alt=""></a>
+            <a class="menu-link" href="editar-infos.html">Perfil <img src="Imgs/perfil.png" alt=""></a>
+            <a class="menu-link" href="login.html">Sair <img src="Imgs/sair.png" alt=""></a>
         </nav>
     </header>
-    <main> 
-        <section> 
-            <div class="ranking-card">
-                <h2>GLOBAL RANKING</h2>
-                <div class="table-container">
-                    <table>
+    <main class="pagina"> 
+        <section class="cartao cartao--estreito"> 
+            <div>
+                <h2 class="titulo">Global <span>Ranking</span></h2>.
+                <div class="tabela-container">
+                    <table class="tabela">
                     <thead>
                         <tr>
                             <th>#</th>

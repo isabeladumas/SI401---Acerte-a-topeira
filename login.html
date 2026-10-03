@@ -4,44 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Acerte os zumbis - Login</title>
-
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <main class="pagina">
+    <main class="pagina-auth">
+        <section class="cartao cartao--login">
+            <img class="planta" src="Imgs/logo.png">
 
-        <section class="login">
-
-            <div >
-                <img class="planta" src="Imgs/logo.png">
-            </div>
-
-            <h1>Pensar nome</h1>
+            <h1 class="titulo">Pensar <span>nome</span></h1>
 
             <p class="subtitulo">Acerte os zumbis</p>
 
-            <form>
-
+            <form class="formulario">
                 <div class="campo">
-                    <label for="usuario">USERNAME</label>
-                    <input type="text" id="usuario" name="usuario"
-                        placeholder="JOGADOR 1">
+                    <label for="usuario">Username</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="JOGADOR 1">
                 </div>
 
                 <div class="campo">
-                    <label for="senha">SENHA</label>
-                    <input type="password" id="senha" name="senha"
-                        placeholder="***********">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="***********">
                 </div>
 
-                <button type="submit"> COMEÇAR O JOGO</button>
-
+                <button type="submit" class="botao"> COMEÇAR O JOGO</button>
             </form>
-
-            <a class="cadastro" href="cadastro.html"> Ainda não tenho cadastro </a>
-
+            <a class="link-auxiliar" href="cadastro.html"> Ainda não tenho cadastro</a>
         </section>
 
     </main>
