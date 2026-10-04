@@ -4,11 +4,13 @@
     --verde-destaque: #8bd748;
     --verde-titulo: #b8e77b;
     --verde-sombra: #22401a;
+    --verde-escuro: #3c7e35;
     --marrom: #8b572f;
     --marrom-escuro: #3b1d0e;
     --amarelo: #f5c72f;
     --ciano: #35e5e5;
     --preto: #0e0c13;
+    --cinza: #4f4b60;
     --fonte: "Press Start 2P", monospace;
     --fonte-diferente:"Pixelify Sans", "Courier New", monospace;
     --tamanho-fonte: 12px;
@@ -329,6 +331,139 @@ body {
 .formulario--grade .botao {
     grid-column: 1 / -1;
     margin-top: 0;
+}
+
+/* Jogo*/
+.cartoes-jogo{
+    display: flex;
+    gap: 30px;
+}
+.container--cartao-info-jogador{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.jogo-principal{
+    min-width: 60%;
+}
+
+.cartao-info-jogador{
+    aspect-ratio: 3/1;
+    max-width: 120px;
+    max-height: 100px;
+    padding: 5px 15px 15px 15px;
+    background-color: var(--preto);
+    border: 7px solid var(--cinza);
+    border-radius: 10px;
+    box-shadow: 18px 10px 0 var(--verde-sombra);
+}
+
+.cartao--info-jogo{
+    background-color: var(--preto);
+    border: 7px solid var(--cinza);
+    border-radius: 10px;
+    box-shadow: none;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+.cartao--jogo{
+    min-height: 50%;
+    margin-top: 20px;
+    background-color: var(--verde-escuro);
+}
+
+.cartao--estreito-jogo {
+    max-width: 20%;
+}
+
+.numero--info-jogo{
+    color: white;
+    font-size: 1rem;
+}
+.titulo--jogo{
+    color: var(--amarelo);
+    margin-bottom: 8%;
+}
+
+.titulo--jogo--info-jogador{
+    color: var(--amarelo);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-top: 10%;
+    margin-bottom: 25%;
+}
+
+.titulo--jogo--info-jogador-acerto{
+    color: var(--amarelo);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+.numero--info-jogador{
+    color: var(--verde-destaque);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.botao-desistir {
+    display: block;
+    width: 100%;
+    height: 60px;
+    margin-top: 44px;
+    background-color: #ff5b69;
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 20px 10px 0 var(--marrom-escuro);
+}
+
+.botao-desistir:hover {
+    background-color: #f00016;
+}
+
+.botao-desistir:active {
+    transform: translate(4px, 3px);
+    box-shadow: 16px 7px 0 var(--marrom-escuro);
+}
+
+.tabela-buracos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px;
+  max-width: stretch;
+}
+
+.buraco {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--verde-sombra) 0 60%,     /* dark green center */
+    var(--verde-escuro) 35% 68%,   /* light green ring */
+    var(--verde-destaque) 68% 100%      /* white outer ring */
+  );
+  display: grid;
+  place-items: center;
+}
+
+.cogu{
+    height: 40px;
 }
 
 

@@ -10,23 +10,104 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>NOME DO SITE
-            <img class="logo-header" src="Imgs/logo.png" alt="mão verde segurando uma flor com pétalas roxas">
+    <header class="topo">
+        <h1 class="logo">
+            Acerte os zumbis
+            <img src="Imgs/vaso.png" alt="vaso vermelho com planta verde">
         </h1>
-        <nav>
-            <ul>
-                <li><a href="jogo.html" class="active">JOGO</a></li>
-                <li><a href="ranking.html">RANKING</a></li>
-                <li><a href="perfil.html">PERFIL</a></li>
-                <li><a href="login.html">SAIR</a></li>
-            </ul>
+
+        <nav class="menu">
+            <a class="menu-link" href="jogo.html" aria-current="page">Jogo <img src="Imgs/bonsai.png" alt=""></a>
+            <a class="menu-link" href="ranking.html">Ranking <img src="Imgs/trofeu.png" alt=""></a>
+            <a class="menu-link" href="editar-infos.html">Perfil <img src="Imgs/perfil.png" alt=""></a>
+            <a class="menu-link" href="login.html">Sair <img src="Imgs/sair.png" alt=""></a>
         </nav>
     </header>
-    <main>
-        <section>
-            <div class="game-card">
-                <img  class="game-placeholder" src="Imgs/logo.png" alt="mão verde segurando uma flor com pétalas roxas">
+    <main class="pagina">
+        <section class="cartoes-jogo">
+            <div class="cartao cartao--estreito-jogo">
+                <h2 class="titulo--jogo"><img src="Imgs/cogu.png" alt="cogumelo vermelho" class="cogu">JARDIM<img src="Imgs/cogu.png" alt="cogumelo vermelho" class="cogu"></h2>
+                <h3 class="titulo--jogo">LINHAS</h3>
+                <div class="cartao cartao--info-jogo">
+                    <p class="numero--info-jogo">3</p>
+                </div>
+                <h3 class="titulo--jogo">COLUNAS</h3>
+                <div class="cartao cartao--info-jogo">
+                    <p class="numero--info-jogo">4</p>
+                </div>
+                <h3 class="titulo--jogo">MODOS</h3>
+                <div class="cartao cartao--info-jogo">
+                    <p class="numero--info-jogo">Classico</p>
+                </div>
+                <button type="submit" class="botao">INICIAR</button>
+                <button type="submit" class="botao-desistir">DESISTIR</button>
+
+            </div>
+            <div class="jogo-principal">
+                <div class="container--cartao-info-jogador">
+                    <div class="cartao cartao-info-jogador">
+                        <h2 class="titulo--jogo--info-jogador">TEMPO
+
+                        </h2>
+                        <p class="numero--info-jogador">0</p>
+                    </div>
+                    <div class="cartao cartao-info-jogador">
+                        <h2 class="titulo--jogo--info-jogador">NÍVEL
+
+                        </h2>
+                        <p class="numero--info-jogador">1</p>
+                    </div>
+                    <div class="cartao cartao-info-jogador">
+                        <h2 class="titulo--jogo--info-jogador">ACERTOS
+
+                        </h2>
+                        <p class="numero--info-jogador">0</p>
+                    </div>
+                    <div class="cartao cartao-info-jogador">
+                        <h2 class="titulo--jogo--info-jogador-acerto">ACERTO
+                         NO NÍVEL</h2>
+                        <p class="numero--info-jogador">0%</p>
+                    </div>
+                    <div class="cartao cartao-info-jogador">
+                        <h2 class="titulo--jogo--info-jogador">MÍNIMO
+
+                        </h2>
+                        <p class="numero--info-jogador">80%</p>
+                    </div>
+                </div>
+                <div class="cartao cartao--jogo">
+                    <div class="tabela-buracos">
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        <div class="buraco"></div>
+                        </div>
+                </div>
+            </div>
+            <div class="cartao cartao--estreito-jogo">
+                <h2 class="titulo--jogo">DIÁRIO DO JARDIM</h2>
+                <div>
+                    <table class="tabela">
+                       <thead>
+                        <tr>
+                            <th>DATA</th>
+                            <th>MOD</th>
+                            <th>PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+                    </tbody> 
+                    </table>
+                </div>
             </div>
         </section>
     </main>
