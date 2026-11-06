@@ -1,14 +1,17 @@
 const DURACAO_PARTIDA = 30;      // segundos
-const TEMPO_VISIVEL = 1000;      // ms que o zumbi fica visível
-const PAUSA_ENTRE_ZUMBIS = 400;  // ms entre um zumbi e o próximo
+const TEMPO_VISIVEL = 1000;      // ms que o zumbi fica visivel
+const PAUSA_ENTRE_ZUMBIS = 400;  // ms entre um zumbi e o proximo
+const ZUMBI = "\u{1F9DF}";       // emoji do zumbi (escrito como codigo para nao quebrar no salvamento)
 
-//Elementos da página
+//Elementos da pagina
 const botaoIniciar = document.querySelector(".botao");
 const botaoDesistir = document.querySelector(".botao-desistir");
-const buracos = document.querySelectorAll(".buraco");
+const tabuleiro = document.querySelector(".tabela-buracos");
+const infoJogo = document.querySelectorAll(".numero--info-jogo");
 const numeros = document.querySelectorAll(".numero--info-jogador");
 
-// ===== Estado do jogo =====
+//Estado do jogo
+let buracos = [];         // lista de buracos do tabuleiro atual
 let jogando = false;
 let tempoRestante = DURACAO_PARTIDA;
 let acertos = 0;
@@ -31,14 +34,14 @@ function pararTimers() {
     clearTimeout(timerPausa);
 }
 
-// ===== Zumbi =====
+//Zumbi
 function mostrarZumbi() {
+    // Sorteia entre TODOS os buracos do tabuleiro atual
     const indice = Math.floor(Math.random() * buracos.length);
     buracoAtual = buracos[indice];
-    buracoAtual.innerHTML = "??";
+    buracoAtual.innerHTML = ZUMBI;
     buracoAtual.style.fontSize = "2.5rem";
 
-    // Depois de TEMPO_VISIVEL ms o zumbi some sozinho
     timerZumbi = setTimeout(esconderZumbi, TEMPO_VISIVEL);
 }
 
@@ -52,28 +55,38 @@ function esconderZumbi() {
     }
 }
 
-// ===== Clique nos buracos =====
-for (let i = 0; i < buracos.length; i++) {
-    buracos[i].addEventListener("click", function () {
-        if (!jogando) {
-            return;
-        }
-        if (buracos[i] == buracoAtual) {
-            // Acerto
-            acertos++;
-            atualizarPlacar();
-            clearTimeout(timerZumbi);
-            esconderZumbi();
-        } else {
-            // Erro (clicou em buraco vazio)
-            erros++;
-        }
-    });
-}
+//Clique nos buracos
+tabuleiro.addEventListener("click", function (evento) {
+    if (!jogando) {
+        return;
+    }
+    const clicado = evento.target;
 
-// ===== Iniciar / Terminar / Desistir =====
+    if (clicado == buracoAtual) {
+        // Acerto
+        acertos++;
+        atualizarPlacar();
+        clearTimeout(timerZumbi);
+        esconderZumbi();
+    } else if (clicado.classList.contains("buraco")) {
+        // Erro (clicou em buraco vazio)
+        erros++;
+    }
+});
+
+
 function iniciarJogo() {
     if (jogando) {
+        return;
+    }
+
+
+    buracos = tabuleiro.querySelectorAll(".buraco");
+    const linhas = parseInt(infoJogo[0].textContent);
+    const colunas = parseInt(infoJogo[1].textContent);
+
+  
+    if (buracos.length != linhas * colunas) {
         return;
     }
 
@@ -116,6 +129,8 @@ function desistirDoJogo() {
     }
 }
 
-botaoIniciar.addEventListener("click", iniciarJogo);
-botaoDesistir.addEventListener("click", desistirDoJogo);    
 
+botaoIniciar.addEventListener("click", function () {
+    setTimeout(iniciarJogo, 0);
+});
+botaoDesistir.addEventListener("click", desistirDoJogo);
