@@ -1,6 +1,8 @@
 const DURACAO_PARTIDA = 30;      // segundos
-const TEMPO_VISIVEL = 1000;      // ms que o zumbi fica visivel
+const TEMPO_VISIVEL_INICIAL = 1000;      // ms que o zumbi fica visivel
+const REDUCAO_POR_NIVEL = 100;
 const PAUSA_ENTRE_ZUMBIS = 400;  // ms entre um zumbi e o proximo
+const PORCENTAGEM_NECESSARIA = 80;
 const ZUMBI = "\u{1F9DF}";       // emoji do zumbi (escrito como codigo para nao quebrar no salvamento)
 
 //Elementos da pagina
@@ -14,9 +16,11 @@ const numeros = document.querySelectorAll(".numero--info-jogador");
 let buracos = [];         // lista de buracos do tabuleiro atual
 let jogando = false;
 let tempoRestante = DURACAO_PARTIDA;
+let acertosTotais = 0;
 let acertos = 0;
 let erros = 0;
 let buracoAtual = null;   // buraco com zumbi agora (null = nenhum)
+let nivelAtual = 1; 
 
 // Timers (guardados para poder limpar)
 let timerRelogio = null;
@@ -25,7 +29,9 @@ let timerPausa = null;
 
 function atualizarPlacar() {
     numeros[0].innerHTML = tempoRestante;
+    numeros[1].innerHTML = nivelAtual;
     numeros[2].innerHTML = acertos;
+    numeros[3].innerHTML = calcularPorcentagemAcertos()+ "%";
 }
 
 function pararTimers() {
@@ -55,6 +61,13 @@ function esconderZumbi() {
     }
 }
 
+//atualizar tempo visivel por nivel
+function calcularTempoVisivel() {
+    return(
+        TEMPO_VISIVEL_INICIAL - (nivelAtual - 1) * REDUCAO_POR_NIVEL
+    );
+}
+
 //Clique nos buracos
 tabuleiro.addEventListener("click", function (evento) {
     if (!jogando) {
@@ -74,39 +87,83 @@ tabuleiro.addEventListener("click", function (evento) {
     }
 });
 
+function calcularPorcentagemAcertos() {
+    return ((acertos / (acertos+erros)) * 100).toFixed(1);
+}
+
+
+function contarTempo() {
+    if (!jogando) {
+        return;
+    }
+
+    if (tempoRestante > 0) {
+        tempoRestante--;
+        atualizarPlacar();
+    }
+
+    if (tempoRestante === 0) {
+        clearInterval(timerRelogio);
+        timerRelogio = null;
+        terminarNivel();
+    }
+}
 
 function iniciarJogo() {
     if (jogando) {
         return;
     }
 
-
     buracos = tabuleiro.querySelectorAll(".buraco");
-    const linhas = parseInt(infoJogo[0].textContent);
-    const colunas = parseInt(infoJogo[1].textContent);
 
-  
-    if (buracos.length != linhas * colunas) {
+    const linhas = parseInt(infoJogo[0].textContent, 10);
+    const colunas = parseInt(infoJogo[1].textContent, 10);
+
+    if (buracos.length !== linhas * colunas) {
         return;
     }
 
     jogando = true;
+    nivelAtual = 1;
     tempoRestante = DURACAO_PARTIDA;
     acertos = 0;
     erros = 0;
+
     botaoIniciar.disabled = true;
     atualizarPlacar();
 
-    timerRelogio = setInterval(function () {
-        tempoRestante--;
-        atualizarPlacar();
-        if (tempoRestante <= 0) {
-            terminarJogo();
-        }
-    }, 1000);
-
+    timerRelogio = setInterval(contarTempo, 1000);
     mostrarZumbi();
 }
+
+function terminarNivel() {
+    if (!jogando) {
+        return;
+    }
+
+    pararTimers();
+
+    if (buracoAtual !== null) {
+        buracoAtual.innerHTML = "";
+        buracoAtual = null;
+    }
+
+    const porcentagem = Number(calcularPorcentagemAcertos());
+
+    if (porcentagem >= PORCENTAGEM_NECESSARIA) {
+        nivelAtual++;
+        tempoRestante = DURACAO_PARTIDA;
+
+        // Começa o próximo nível sem zerar os acertos totais
+        atualizarPlacar();
+
+        timerRelogio = setInterval(contarTempo, 1000);
+        mostrarZumbi();
+    } else {
+        terminarJogo();
+    }
+}
+
 
 function pararJogo() {
     jogando = false;
@@ -117,7 +174,7 @@ function pararJogo() {
 
 function terminarJogo() {
     pararJogo();
-    alert("Fim de jogo! Acertos: " + acertos + " | Erros: " + erros);
+    alert("Fim de jogo! Acertos: " + acertosTotais + " | Erros: " + erros);
 }
 
 function desistirDoJogo() {
